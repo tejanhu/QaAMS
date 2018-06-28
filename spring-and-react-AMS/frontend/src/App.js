@@ -57,9 +57,31 @@ class App extends Component {
     </nav>
           <h1 className="App-title">{this.state.message}</h1>
         {/* </header> */}
-        <p className="App-intro">
+        {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
+        <div className="App-intro">
+          
+          <form>
+          <div class="form-group">
+          <label for="fname">First-name:</label><br/>
+          <input type="text" class="form-control" id="fname" placeholder="Enter firstname"/>
+          </div>
+          <div class="form-group">
+          <label for="sname">Surname</label><br/>
+          <input type="text" class="form-control" id="fname" placeholder="Enter surname"/>
+          </div>
+          <div class="form-group">
+          <label for="accno">Account number</label><br/>
+          <input type="text" class="form-control" id="acc_no" placeholder="Enter account number"/>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+
+
+          </div>
       </div>
     );
   }
