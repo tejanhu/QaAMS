@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import { Navbar } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
+// import {Router, Route, IndexRouter, hashHistory} from "react-router";
+// import FontAwesome from 'react-fontawesome';
+
 
 class App extends Component {
 
@@ -69,26 +72,23 @@ class App extends Component {
           <p>It allows users to create an account, view their account, update their account and save any changes on their account.</p>
       </div>
         <div className="App-intro">
-          
-          <form>
-          <div class="input-group">
-          <label for="fname">First-name:</label><br/>
-          <input type="text" class="form-control" id="fname" placeholder="Enter firstname"/>
-          </div>
-          <div class="input-group">
-          <label for="sname">Surname:</label><br/>
-          <input type="text" class="form-control" id="lname" placeholder="Enter surname"/>
-          </div>
-          <div class="input-group">
-          <label for="accno">Account number</label><br/>
-          <input type="text" class="form-control" id="acc_no" placeholder="Enter account number"/>
-          </div>
-          <button type="submit" class="btn btn-primary" role="button" id="submit-btn">Submit</button>
-        </form>
-
-
-
-
+         <div class="container">
+            <form>
+            <div class="input-group">
+            <label for="fname">First-name:</label><br/>
+            <input type="text" class="form-control" id="fname" placeholder="Enter firstname" />
+            </div>
+            <div class="input-group">
+            <label for="sname">Surname:</label><br/>
+            <input type="text" class="form-control" id="lname" placeholder="Enter surname"/>
+            </div>
+            <div class="input-group">
+            <label for="accno">Account number</label><br/>
+            <input type="text" class="form-control" id="acc_no" placeholder="Enter account number"/>
+            </div>
+            <button type="submit" class="btn btn-primary" role="button" id="submit-btn">Submit</button>
+          </form>
+        </div>
           </div>
       </div>
     );
