@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import { Navbar } from 'react-bootstrap';
+import { Footer } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
 import Main from './components/main';
 // import FontAwesome from 'react-fontawesome';
@@ -60,6 +61,50 @@ render(){
          <Main>
        </Main>
       </div>
+      <div>
+      {/* <!-- Footer --> */}
+<footer class="page-footer font-small cyan darken-3 mt-4">
+
+    {/* <!-- Footer Elements --> */}
+    <div class="container">
+
+      {/* <!-- Grid row--> */}
+      <div class="row">
+
+        {/* <!-- Grid column --> */}
+        <div class="col-md-12 py-5">
+          <div class="mb-5 flex-center">
+
+            {/* <!-- Github --> */}
+            <a class="github-ic">
+              <i class="fa fa-github fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            {/* <!-- Bitbucket --> */}
+               <a class="bitb-ic">
+              <i class="fa fa-bitbucket fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            {/* <!--Linkedin --> */}
+            <a class="li-ic">
+              <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+          </div>
+        </div>
+        {/* <!-- Grid column --> */}
+
+      </div>
+      {/* <!-- Grid row--> */}
+
+    </div>
+    {/* <!-- Footer Elements --> */}
+
+    {/* <!-- Copyright --> */}
+    <div class="footer-copyright text-center py-3">© 2018 Copyright: Hussein Ahmed Tejan
+    </div>
+    {/* <!-- Copyright --> */}
+
+  </footer>
+  {/* <!-- Footer --> */}
+    </div>
     </div>
   )
 }

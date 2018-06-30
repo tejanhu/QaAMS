@@ -22,6 +22,15 @@
   font-size: large;
 }
 
+.cred{
+  float: left;
+  font-weight: bold;
+}
+
+#login-btn{
+  margin: 15px;
+}
+
 
 
 @keyframes App-logo-spin {
