@@ -1,10 +1,13 @@
 import React from 'react';
 import {Switch,Route} from 'react-router-dom';
+import {Find} from 'array.prototype.find';
+
 
 import Home from './home';
 import Dashboard from './dashboard';
 import CreateAccount from './createAccount';
 import ViewAccount from './viewAccount';
+
 
 
 const Main = () => (

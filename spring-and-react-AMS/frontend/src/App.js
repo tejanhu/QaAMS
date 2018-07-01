@@ -6,7 +6,6 @@ import { Navbar, Footer, Jumbotron, NavItem, MenuItem, NavDropdown, Dropdown } f
 import Main from './components/main';
 // import FontAwesome from 'react-fontawesome';
 
-
 class App extends Component {
 
   constructor(){
