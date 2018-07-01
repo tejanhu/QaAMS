@@ -1,7 +1,47 @@
 import React, { Component } from 'react';
 
 class CreateAccount extends Component{
+
+     addAccount(event) {
+     event.preventDefault();
+     let uname = this.refs.uname.value;
+     let psw = this.refs.psw.value;
+     let name = this.refs.name.value;
+     let surname = this.refs.surname.value;
+     let accno = this.refs.accno.value;
+
+     let account = {
+      uname,
+       psw,
+       name, 
+       surname,
+       accno
+     };
+
+     let accounts = this.state.accounts;
+
+     accounts.push(account);
+
+     this.setState({
+       accounts: accounts
+     });
+
+     this.refs.accountForm.reset();
+   }
+
+   constructor(){
+     super();
+     this.addAccount = this.addAccount.bind(this)
+     this.state = {
+       accounts: [],
+       title: "Welcome to AMS"
+     }
+   }
+
+
+
     render(){
+        let accounts = this.state.accounts;
         return (
 
                     <div>
@@ -25,6 +65,9 @@ class CreateAccount extends Component{
                             <button type="submit" className="btn btn-primary" id="submit-btn" onClick={this.addAccount}>Submit</button>
                         </div>
                     </form>
+                    <pre>
+                        {JSON.stringify(accounts)}
+                    </pre>
                     </div>
         )
     }
