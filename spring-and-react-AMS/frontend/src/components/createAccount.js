@@ -1,79 +1,75 @@
 import React, { Component } from 'react';
+import Find from 'array.prototype.find';
 
 class CreateAccount extends Component{
-
-
-
 
 
     constructor(){
         super();
         this.addAccount = this.addAccount.bind(this);
         this.deleteAccount = this.deleteAccount.bind(this);
+        this.editAccount = this.editAccount.bind(this);
         this.state = {
           accounts: [],
-          uid: 0,
-          index: ''
+          index: '',
+          act: 0
         }
       }
 
-
-
-     addAccount(event) {
-        event.preventDefault();
-
-        let accounts = this.state.accounts;
-
-        // let uname = this.refs.uname.value;
-        // let psw = this.refs.psw.value;
-        let name = this.refs.name.value;
-        let surname = this.refs.surname.value;
-        let accno = this.refs.accno.value;
-        // let uid = this.state.uid;
-        // uid += 1;
-
-        // console.log("my name is: "+name);
-        // console.log("my surname is: "+surname);
-        // console.log("my accno is: "+accno);
-
+    addAccount(e) {
+        e.preventDefault();
+   
+        var accounts = this.state.accounts;
+   
+        var name = this.refs.name.value;
+        var surname = this.refs.surname.value;
+        var accno = this.refs.accno.value;
+   
+        // let act = 0;
+   
         if(this.state.act === 0){ //new
-            let account = {
-                //    uid,
-                //    uname,
-                //    psw,
-                name, 
-                surname,
-                accno
-            }
-        // console.log("my name is: "+name);
-        // console.log("my surname is: "+surname);
-        // console.log("my accno is: "+accno);
-            accounts.push(account);
-        }
-        else{  //update
-            let index = this.state.index;
-            accounts[index].name = name;
-            accounts[index].surname = surname;
-            accounts[index].accno = accno;
-        }
-
+           let account = {
+               //    uid,
+               //    uname,
+               //    psw,
+               name, 
+               surname,
+               accno
+           }
+        //    let index = this.state.index;
+           // accounts[index].name = name;
+           // accounts[index].surname = surname;
+           // accounts[index].accno = accno;
+           accounts.push(account);
+        //    act = 1;
+        //    console.log("hello world")
+        //    console.log("hello world")
+       }
+       else{  //update
+           let index = this.state.index;
+           accounts[index].name = name;
+           accounts[index].surname = surname;
+           accounts[index].accno = accno;
+           console.log("baba");
+       }
+   
         this.setState({
-        accounts: accounts,
-        act: 0
-        //    ,uid: uid
+          accounts: accounts,
+          act:0
         });
-
+   
         this.refs.accountForm.reset();
-   }
+        this.refs.name.focus();
+      }
 
-   deleteAccount = (index) => {
+    deleteAccount = (i) => {
         let accounts = this.state.accounts;
 
         // let account = accounts.find(function(account){
         //     return account.uid === index
         // });
 
-        accounts.splice(index, 1);
+        accounts.splice(i, 1);
 
         this.setState({
             accounts: accounts
@@ -81,29 +77,43 @@ class CreateAccount extends Component{
 
         this.refs.accountForm.reset();
         this.refs.name.focus();
-}
+    }
 
-    editAccount = (index) => {
-        let account = this.state.accounts[index];
+    editAccount = (i) => {
+
+        var accounts = this.state.accounts;
+
+        let account = this.state.accounts[i];
+
+        // let j = index;
 
         this.refs.name.value = account.name;
         this.refs.surname.value = account.surname;
         this.refs.accno.value = account.accno;
 
-        console.log(this.refs.name.value);
-        console.log(this.refs.surname.value);
-        console.log(this.refs.accno.value);
-
         this.setState({
+            // accounts: accounts,
             act: 1,
-            index: index
+            index: i
         });
-
+        // this.refs.accountForm.reset();
         this.refs.name.focus();
+
+        // console.log("hello world")
+        // console.log("hello world")
 
 
     }
+
+
+
+ 
+
+
+
+
   
+
 
 
     render(){
@@ -114,29 +124,29 @@ class CreateAccount extends Component{
                         <h1>Create an Account</h1>
                     <form ref="accountForm">
                         <div className="container">
-                            <label className="cred"><br/>Username:<br/></label>
+                            <label for="uname" className="cred"><br/>Username:<br/></label>
                             <input type="text" className="form-control" id="uname" ref="uname" placeholder="Enter username" />
                             
-                            <label className="cred"><br/>Password:<br/></label>
+                            <label for="psw" className="cred"><br/>Password:<br/></label>
                             <input type="password" className="form-control" id="psw" ref="psw" placeholder="Enter password" />
 
-                            <label className="cred"><br/>First-name:<br/></label>
+                            <label for="fname" className="cred"><br/>First-name:<br/></label>
                             <input type="text" className="form-control" id="fname" ref="name" placeholder="Enter firstname" />
                             
-                            <label className="cred"><br/>Surname:<br/></label>
+                            <label for="sname" className="cred"><br/>Surname:<br/></label>
                             <input type="text" className="form-control" id="lname" ref="surname" placeholder="Enter surname"/>
                             
-                            <label className="cred"><br/>Account number<br/></label>
+                            <label for="accno" className="cred"><br/>Account number<br/></label>
                             <input type="text" className="form-control" id="acc_no" ref="accno" placeholder="Enter account number"/>
-                            <button type="submit" className="btn btn-primary" id="submit-btn" onClick={(event)=> this.addAccount(event)}>Submit</button>
+                            <button type="submit" className="btn btn-primary" id="submit-btn" onClick={(e)=> this.addAccount(e)}>Submit</button>
                         </div>
                     </form>
                     <pre>
-                        {accounts.map((account, index) => 
-                            <li key={index}>
-                                {index+1}. {account.name}, {account.surname}, {account.accno}
-                                <button onClick={() => this.deleteAccount(index)} className="delete-btn">Delete Account</button>
-                                <button onClick={() => this.editAccount(index)} className="edit-btn">Edit Account</button>
+                        {accounts.map((account, i) => 
+                            <li key={i}>
+                                {i+1}. {account.name}, {account.surname}, {account.accno}
+                                <button onClick={() => this.deleteAccount(i)} className="delete-btn">Delete Account</button>
+                                <button onClick={() => this.editAccount(i)} className="edit-btn">Edit Account</button>
                         </li>)}
                         
                     </pre>
