@@ -6,9 +6,9 @@ class Home extends Component{
            
                 <form ref="userForm">
                         <div class="container">
-                            <label for="uname" className="cred"><br/>Username:<br/></label>
+                            <label className="cred"><br/>Username:<br/></label>
                             <input type="text" class="form-control" id="uname" ref="uname" placeholder="Enter Username" required/>
-                            <label for="psw" className="cred"><br/>Password:<br/></label>
+                            <label className="cred"><br/>Password:<br/></label>
                             <input type="password" class="form-control" id="psw" ref="psw" placeholder="Enter Password" required/>                         
                             <div class="forgot-psw">
                                 <a class="forgot" href="/">Forgot password?</a>
