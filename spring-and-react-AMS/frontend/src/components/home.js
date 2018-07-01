@@ -13,7 +13,7 @@ class Home extends Component{
                             <div class="forgot-psw">
                                 <a class="forgot" href="/">Forgot password?</a>
                             </div>
-                            <button type="submit" class="btn btn-primary" role="button" id="login-btn" onClick={this.viewDashboard}>Login</button>
+                            <button type="submit" class="btn btn-primary" id="login-btn" onClick={this.viewDashboard}>Login</button>
                          </div>
                 </form>
             

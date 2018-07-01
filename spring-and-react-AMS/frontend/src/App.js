@@ -2,14 +2,38 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
-import { Navbar } from 'react-bootstrap';
-import { Footer } from 'react-bootstrap';
-import { Jumbotron } from 'react-bootstrap';
+import { Navbar, Footer, Jumbotron, NavItem, MenuItem, NavDropdown, Dropdown } from 'react-bootstrap';
 import Main from './components/main';
 // import FontAwesome from 'react-fontawesome';
 
 
 class App extends Component {
+
+  constructor(){
+    super();
+
+    this.state = {
+      displayMenu: false,
+    };
+
+    this.showDropdownMenu = this.showDropdownMenu.bind(this);
+    this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+
+  };
+
+  showDropdownMenu(event){
+    event.preventDefault();
+    this.setState({ displayMenu: true}, () => {
+      document.addEventListener('click', this.hideDropdownMenu);
+    });
+  }
+
+  hideDropdownMenu(event){
+    event.preventDefault();
+    this.setState({ displayMenu: false}, () => {
+      document.removeEventListener('click', this.hideDropdownMenu);
+    });
+  }
 
 render(){
   return(
@@ -25,26 +49,39 @@ render(){
            <li className="nav-item active">
              <a className="nav-link" href="/dashboard">Dashboard <span className="sr-only">(current)</span></a>
            </li>
+           <li className="nav-item">
+             <a className="nav-link" href="/createAccount">Create Account <span className="sr-only">(current)</span></a>
+           </li>
+           <li className="nav-item">
+             <a className="nav-link" href="/viewAccount">View Account <span className="sr-only">(current)</span></a>
+           </li>
            {/* <li className="nav-item">
              <a className="nav-link" href="/">Link</a>
            </li> */}
            <li className="nav-item dropdown ">
-             <a className="nav-link dropdown-toggle" href="/viewAccount" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <a className="nav-link dropdown-toggle" onClick={this.showDropdownMenu} id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Account <span className="sr-only">(current)</span>
              </a>
+             {this.state.displayMenu ? (
              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                <a className="dropdown-item" href="/viewAccount">View Accounts</a>
                <div className="dropdown-divider"></div>
-               <a className="dropdown-item" href="/addAccount">Add Account</a>
-               <div className="dropdown-divider"></div>
-               <a className="dropdown-item" href="/">Something else here</a>
+               <a className="dropdown-item" href="/createAccount">Add Account</a>
+               {/* <div className="dropdown-divider"></div>
+               <a className="dropdown-item" href="/">Something else here</a> */}
              </div>
+             ):
+             (
+               null
+             )
+             }
            </li>
            <li className="nav-item">
              <a className="nav-link disabled" href="#">Disabled</a>
            </li>
          </ul>
        </div>
+
      </nav>
            <h1 className="App-title">{}</h1>
          {/* </header> */}
@@ -98,7 +135,7 @@ render(){
         {/* <!-- Footer Elements --> */}
 
         {/* <!-- Copyright --> */}
-        <div class="footer-copyright text-center py-3">© 2018 Copyright: Hussein Ahmed Tejan
+        <div class="footer-copyright text-center py-3">© 2018 Copyright: AMS
         </div>
         {/* <!-- Copyright --> */}
 
